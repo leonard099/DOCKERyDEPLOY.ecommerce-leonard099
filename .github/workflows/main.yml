@@ -1,0 +1,30 @@
+name: deploy
+
+on: 
+  push:
+    branches:
+      -"main"
+jobs:
+  build:
+    runs-on: ubuntu-lates
+    steps:
+    -
+      name: Checkout
+      uses: action/checkout@v4
+    -
+      name: Login to Docke Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{secret.}}
+        password: ${{secret.TOKEN}}
+    -
+      name: setup docker bulidx
+      uses: docker/setup-buildx-actions@v3
+    -
+      name: build and push
+      uses: dokce/buil-push/actions@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{ secret.DOCKERUSER}}/nest-demo:latest
