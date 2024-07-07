@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3005:3000"
+    environment:
+      DB: eccomerse
+      DB_HOST: postgres
+      DB_USERPOSTGRES: postgres
+      DB_PASSWORD: leopieroni
+    depends_on:
+      - postgresql
+
+  postgresql:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgresql
+      POSTGRES_PASSWORD: leopieroni
+      POSTGRES_DB: eccomerse
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
