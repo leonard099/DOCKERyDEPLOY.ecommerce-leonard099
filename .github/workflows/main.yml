@@ -27,4 +27,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERUSER }}/nest-demo:latest
+          tags: ${{ secrets.DOCKERUSER }}/ecommerce-leonard099
