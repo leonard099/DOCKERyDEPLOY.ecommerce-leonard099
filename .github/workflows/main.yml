@@ -4,6 +4,7 @@ on:
   push:
     branches:
       -"main"
+      
 jobs:
   build:
     runs-on: ubuntu-lates
@@ -22,7 +23,7 @@ jobs:
       uses: docker/setup-buildx-actions@v3
     -
       name: build and push
-      uses: dokce/buil-push/actions@v5
+      uses: dokce/buil-push-actions@v5
       with:
         context: .
         file: ./Dockerfile
